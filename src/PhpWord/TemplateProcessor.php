@@ -399,6 +399,10 @@ class TemplateProcessor
      */
     protected function setValueForPart($documentPartXML, $search, $replace, $limit)
     {
+        
+        // Prevent special characters as &
+        $replace = htmlspecialchars($replace);
+        
         if (substr($search, 0, 2) !== '${' && substr($search, -1) !== '}') {
             $search = '${' . $search . '}';
         }
